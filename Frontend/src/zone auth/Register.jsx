@@ -115,7 +115,7 @@ const Register = () => {
               <span className="text-red-500">invalid password</span>
             )}
 
-            <div className="absolute top-[30.4rem] left-[66.5rem]">
+            <div className="absolute top-[34.4rem] left-[66.5rem]">
               {visible && (
                 <Eye
                   className="cursor-pointer"
