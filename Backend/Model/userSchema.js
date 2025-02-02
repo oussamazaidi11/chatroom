@@ -1,0 +1,1 @@
+// configure a user schéma && rooms schéma 
