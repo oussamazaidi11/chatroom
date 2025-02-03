@@ -5,7 +5,7 @@ import Home from "./component/Home";
 import Login from "./zone auth/Login";
 import Register from "./zone auth/Register";
 import Profile from "./zone user/Profile";
-import Sidebar from "./component/Sidebar";
+
 function App() {
   return (
     <div>
@@ -17,7 +17,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/Profile" element={<Profile />} />
-          <Route path="/sd" element={<Sidebar />} />
         </Routes>
       </Router>
     </div>

@@ -5,7 +5,7 @@ const Navbar = () => {
     <div>
       <div
         id="container"
-        className="h-8 flex justify-center gap-28 bg-indigo-500  shadow-lg shadow-blue-400 font-bold text-neutral-800 text-xl bg-opacity-50"
+        className="h-8 flex justify-center gap-28 bg-indigo-500  font-bold text-neutral-800 text-xl bg-opacity-50"
       >
         <div className=" flex justify-center  hover:bg-violet-400 cursor-pointer  duration-700 rounded w-28 h-7">
           HOME
