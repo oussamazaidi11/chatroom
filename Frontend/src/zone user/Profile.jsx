@@ -13,6 +13,8 @@ import Footer from "../component/Footer";
 import { use } from "react";
 
 const Profile = () => {
+  const [Roomname, setRoomname] = useState("");
+  const [Roompassword, setRoompassword] = useState("");
   const [create, setcreate] = useState(false);
   const Handlecreateroom = () => {
     setcreate(!create);
@@ -34,17 +36,17 @@ const Profile = () => {
                 <User />
                 Zone utilisateur
               </div>
-              <div className="flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-500 duration-300">
+
+              <button
+                className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-500 duration-300"
+                onClick={() => {
+                  setcreate(!create);
+                }}
+              >
                 <BadgePlus />
-                <button
-                  className="w-full flex"
-                  onClick={() => {
-                    setcreate(!create);
-                  }}
-                >
-                  Creé une room
-                </button>
-              </div>
+                Creé une room
+              </button>
+
               <div className="flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-500 duration-300">
                 <UserPen />
                 Gestion de profile

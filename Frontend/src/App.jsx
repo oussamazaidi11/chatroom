@@ -5,6 +5,7 @@ import Home from "./component/Home";
 import Login from "./zone auth/Login";
 import Register from "./zone auth/Register";
 import Profile from "./zone user/Profile";
+import Roomdisplaymsg from "./zone user/Roomdisplaymsg";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/conversation" element={<Roomdisplaymsg />} />
         </Routes>
       </Router>
     </div>
