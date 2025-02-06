@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logg from "../assets/logg.jpg?url";
-import Footer from "../component/footer";
+import Footer from "../component/Footer";
 import { LogIn, Eye, EyeClosed } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 const Login = () => {

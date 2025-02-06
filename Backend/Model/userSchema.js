@@ -1,7 +1,7 @@
 // configure a user schéma && rooms schéma
 const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
     required: [true, "please insert ur name"],
   },

@@ -1,7 +1,3 @@
-// configure a base url
-// create aut && room slices
-// configure store
-//configure provider in main.jsx
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { http } from "../api";
 
@@ -20,11 +16,11 @@ export const login = createAsyncThunk("auth/login", async (data) => {
 });
 export const register = createAsyncThunk("auth/register", async (data) => {
   try {
-    let url = "auth/register";
-    let res = await http.post(url, data);
+    const url = "auth/register";
+    const res = await http.post(url, data);
     return res.data;
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err);
   }
 });
 export const authSlice = createSlice({
