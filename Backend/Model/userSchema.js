@@ -15,6 +15,8 @@ const userSchema = new mongoose.Schema({
     required: [true, "insert password"],
   },
 });
-module.exports = ("User", userSchema);
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
 //userSchema as User
 //ALIAS USERRR §§§§§§

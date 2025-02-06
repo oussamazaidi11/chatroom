@@ -3,6 +3,8 @@ import logg from "../assets/logg.jpg?url";
 import Footer from "../component/footer";
 import { LogIn, Eye, EyeClosed } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { register, setUser } from "../features/auth/authSlice";
 
 const Register = () => {
   const [visible, setvisible] = useState(false);
@@ -36,6 +38,7 @@ const Register = () => {
       setpasswordError("");
     }
   }
+  const navigate = useNavigate();
   function HandleChangeusername(e) {
     const username = e.target.value;
     setusername(username);
@@ -45,20 +48,31 @@ const Register = () => {
       setusernameError("");
     }
   }
-  const data = {
-    email,
-    password,
-    username,
-  };
-  console.log(data);
+  const Dispatch = useDispatch();
+
   const Handlesubmit = (e) => {
+    const data = {
+      email,
+      password,
+      username,
+    };
     e.preventDefault();
+
     console.log(data);
+    Dispatch(register(data))
+      .then((res) => {
+        console.log(res);
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  const navigate = useNavigate();
+
   const signup = () => {
     navigate("/register");
   };
+
   return (
     <div>
       <div
@@ -69,7 +83,7 @@ const Register = () => {
           id="container"
           className="h-[35rem] w-[30rem] mt-36 text-white italic font-semibold  bg-slate-950/50 flex justify-center items-center rounded-[1rem] shadow-lg shadow-fuchsia-800 "
         >
-          <div>
+          <form onSubmit={Handlesubmit}>
             <div className="mb-24 ml-6 text-3xl flex gap-6 ">
               {" "}
               <LogIn size={36} />
@@ -143,13 +157,12 @@ const Register = () => {
 
             <div id="button-section" className="flex justify-center mt-14">
               <input
-                onClick={signup}
-                type="button"
+                type="submit"
                 value="join now"
                 className="bg-fuchsia-600/40 w-24 h-8 rounded shadow-md shadow-indigo-500  cursor-pointer hover:bg-pink-400  duration-500 hover:scale-105"
               />
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <Footer />
