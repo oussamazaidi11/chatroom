@@ -40,12 +40,27 @@ const register = asyncHandler(async (req, res) => {
         username: user.username,
         email: user.email,
       },
-      token: Generatetoken(user._id),
     });
   } else {
     res.status(400);
     throw new Error("Invalid user data");
   }
 });
+const login = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) {
+    res.status(404).json({ message: "user dosen t exist" });
+  }
+  const confpass = await bcrypt.compare(password, user.password);
+  if (confpass) {
+    res.status(200).json({
+      message: "connect with success",
+      token: Generatetoken(user._id),
+    });
+  } else {
+    res.status(500).json({ message: "wrong password " });
+  }
+});
 
-module.exports = register;
+module.exports = { register, login };
