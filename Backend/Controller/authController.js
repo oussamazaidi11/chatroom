@@ -14,36 +14,33 @@ const Generatetoken = (id) => {
 const register = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
-  // Check if user already exists
   const existingUser = await User.findOne({ email });
   if (existingUser) {
     res.status(400);
-    throw new Error("Email already exists");
+    console.log("Email already exists");
   }
 
-  // Hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  // Create user
   const user = await User.create({
-    username,
-    email,
+    username: username,
+    email: email,
     password: hashedPassword,
   });
 
   if (user) {
     res.status(201).json({
       message: "User created successfully",
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-      },
+      // user: {
+      //   id: user._id,
+      //   username: user.username,
+      //   email: user.email,
+      // },
     });
   } else {
     res.status(400);
-    throw new Error("Invalid user data");
+    console.log("Invalid user data");
   }
 });
 const login = asyncHandler(async (req, res) => {

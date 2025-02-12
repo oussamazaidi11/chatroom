@@ -61,7 +61,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          {!create && (
+          {create && (
             <div className="w-[20rem] h-[15rem] bg-white mt-28 shadow-lg rounded font-medium  ">
               <div>Crée le nom </div>
               <div>

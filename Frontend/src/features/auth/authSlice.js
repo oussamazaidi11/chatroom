@@ -19,8 +19,8 @@ export const register = createAsyncThunk("auth/register", async (data) => {
     const url = "auth/register";
     const res = await http.post(url, data);
     return res.data;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 });
 export const authSlice = createSlice({
