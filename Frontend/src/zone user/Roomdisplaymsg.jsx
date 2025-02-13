@@ -1,24 +1,35 @@
 import React from "react";
-
+import { Send } from "lucide-react";
+import Footer from "../component/Footer";
+import chatbg from "../assets/chatbg.jpg?url";
 const Roomdisplaymsg = () => {
   return (
-    <div className="flex justify-center bg-slate-400">
-      <div>
-        <div
-          name="textarea"
-          className="border border-black h-[50rem] w-[50rem] rounded bg-white"
-        ></div>
-        <form action="" className="flex w-[50rem]  ">
-          <input
-            type="text"
-            className="w-full"
-            placeholder="ecrire votre message"
-          />
-          <button type="submit" className="bg-blue-300 p-1 pl-4 pr-4  ">
-            Send
-          </button>
-        </form>
+    <div>
+      <div
+        style={{ backgroundImage: `url(${chatbg})` }}
+        className="flex justify-center bg-cover bg-center"
+      >
+        <div className="mb-4">
+          <div
+            name="textarea"
+            className="shadow-md shadow-black h-[50rem] w-[50rem] rounded bg-white/60"
+          ></div>
+          <form action="" className="flex w-[50rem]  ">
+            <input
+              type="text"
+              className="w-full rounded shadow-sm"
+              placeholder="ecrire votre message"
+            />
+            <button
+              type="submit"
+              className="bg-blue-500 p-1 pl-4 pr-4  rounded-full"
+            >
+              <Send />
+            </button>
+          </form>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };

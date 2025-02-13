@@ -6,7 +6,7 @@ import {
   CircleHelp,
   BadgePlus,
 } from "lucide-react";
-import bggg from "../assets/bggg.jpg?url";
+import chatbg from "../assets/chatbg.jpg?url";
 
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
@@ -16,16 +16,17 @@ const Profile = () => {
   const [Roomname, setRoomname] = useState("");
   const [Roompassword, setRoompassword] = useState("");
   const [create, setcreate] = useState(false);
+  const [visible, setvisible] = useState(false);
   const Handlecreateroom = (e) => {
     e.preventDefault();
-    setcreate(!create);
+
     console.log("function executed ");
   };
   return (
     <div>
       <div
-        className="bg-cover bg-center h-[60rem] "
-        style={{ backgroundImage: `url(${bggg})` }}
+        className="bg-cover bg-center h-[60rem] bg-black "
+        style={{ backgroundImage: `url(${chatbg})` }}
       >
         <Navbar />
         <div name="body section" className="flex gap-6 mt-9">
@@ -41,7 +42,7 @@ const Profile = () => {
 
               <button
                 className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-500 duration-300"
-                onClick={() => {
+                onMouseEnter={() => {
                   setcreate(!create);
                 }}
               >
@@ -49,10 +50,15 @@ const Profile = () => {
                 Creé une room
               </button>
 
-              <div className="flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-500 duration-300">
+              <button
+                onClick={() => {
+                  setvisible(!visible);
+                }}
+                className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-500 duration-300"
+              >
                 <UserPen />
                 Gestion de profile
-              </div>
+              </button>
               <div className=" flex gap-2 rounded p-2 mt-6 cursor-pointer hover:bg-neutral-500 duration-300">
                 <CircleEllipsis />
                 Options
@@ -66,9 +72,20 @@ const Profile = () => {
           {create && (
             <form
               onSubmit={Handlecreateroom}
-              className="w-[20rem] h-[15rem] bg-white mt-28 shadow-lg rounded font-medium  "
+              onMouseLeave={() => {
+                setcreate(!create);
+              }}
+              className="w-[20rem] h-[15rem] bg-white/40 mt-28 shadow-lg rounded font-medium  "
             >
-              <div>Crée le nom </div>
+              <div>Crée le nom du room </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="entrer un nom"
+                  className="bg-slate-300 w-full rounded"
+                />
+              </div>
+              <div>Crée votre alias👾</div>
               <div>
                 <input
                   type="text"
@@ -97,25 +114,27 @@ const Profile = () => {
               </div>
             </form>
           )}
-          <div
-            name="profile"
-            className="w-[25%] h-[40rem] bg-white rounded shadow ml-[35%]"
-          >
+          {visible && (
             <div
-              name="photo"
-              className="rounded-full w-36 h-36  bg-slate-500/50 flex justify-center"
-            ></div>
-            <div>
-              <span className="text-blue-700 font-semibold flex justify-center">
-                upload your profile photo
-              </span>
-              <input type="file" name="" id="" />
-            </div>
+              name="profile"
+              className="w-[25%] h-[40rem] bg-white/40 rounded shadow ml-[35%]"
+            >
+              <div
+                name="photo"
+                className="rounded-full w-36 h-36  bg-slate-500/50 flex justify-center"
+              ></div>
+              <div>
+                <span className="text-blue-700 font-semibold flex justify-center">
+                  upload your profile photo
+                </span>
+                <input type="file" name="" id="" />
+              </div>
 
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          )}
         </div>
       </div>
       <Footer />
