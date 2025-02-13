@@ -16,8 +16,10 @@ const Profile = () => {
   const [Roomname, setRoomname] = useState("");
   const [Roompassword, setRoompassword] = useState("");
   const [create, setcreate] = useState(false);
-  const Handlecreateroom = () => {
+  const Handlecreateroom = (e) => {
+    e.preventDefault();
     setcreate(!create);
+    console.log("function executed ");
   };
   return (
     <div>
@@ -62,7 +64,10 @@ const Profile = () => {
             </div>
           </div>
           {create && (
-            <div className="w-[20rem] h-[15rem] bg-white mt-28 shadow-lg rounded font-medium  ">
+            <form
+              onSubmit={Handlecreateroom}
+              className="w-[20rem] h-[15rem] bg-white mt-28 shadow-lg rounded font-medium  "
+            >
               <div>Crée le nom </div>
               <div>
                 <input
@@ -85,12 +90,12 @@ const Profile = () => {
               <div className=" mt-6 flex justify-end mr-8 ">
                 <button
                   className="bg-cyan-600 pl-3 pr-3 rounded hover:bg-cyan-700 cursor-pointer"
-                  onClick={Handlecreateroom}
+                  type="submit"
                 >
                   Créer
                 </button>
               </div>
-            </div>
+            </form>
           )}
           <div
             name="profile"

@@ -32,11 +32,11 @@ const register = asyncHandler(async (req, res) => {
   if (user) {
     res.status(201).json({
       message: "User created successfully",
-      // user: {
-      //   id: user._id,
-      //   username: user.username,
-      //   email: user.email,
-      // },
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+      },
     });
   } else {
     res.status(400);

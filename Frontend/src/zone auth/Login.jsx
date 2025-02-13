@@ -22,7 +22,7 @@ const Login = () => {
     dispatch(login(data)).then((res) => {
       console.log(res);
       dispatch(setUser(res.payload));
-      console.log(res.payload);
+      //hneeeeeeeee aaaaaaa 
 
       navigate("/profile");
     });
