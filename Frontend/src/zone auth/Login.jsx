@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logg from "../assets/logg.jpg?url";
+import logg from "../assets/newlog.jpg?url";
 import Footer from "../component/Footer";
 import { LogIn, Eye, EyeClosed } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ const Login = () => {
     dispatch(login(data)).then((res) => {
       console.log(res);
       dispatch(setUser(res.payload));
-      //hneeeeeeeee aaaaaaa 
+      //hneeeeeeeee aaaaaaa
 
       navigate("/profile");
     });
@@ -35,11 +35,11 @@ const Login = () => {
         style={{ backgroundImage: `url(${logg})` }}
       >
         <form
-          className="mt-[16rem] p-3 h-[20rem] w-[20rem] bg-white/50 rounded flex justify-center "
+          className="mt-[16rem] p-3 h-[20rem] w-[20rem] bg-white/30 rounded flex justify-center "
           onSubmit={HandleSubmit}
         >
           <div>
-            <p className="ml-9 font-semibold text-2xl">Login</p>
+            <p className="ml-12 font-bold text-2xl">Login</p>
 
             <div className="mt-4">
               email : <br />

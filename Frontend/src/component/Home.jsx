@@ -1,5 +1,5 @@
 import React from "react";
-import bgg from "../assets/bgg.avif?url";
+import ne from "../assets/new.jpg?url";
 import card from "../assets/card.jpg?url";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const Home = () => {
     <div>
       <div
         className="bg-cover bg-center h-[50rem] flex justify-center items-center  relative  "
-        style={{ backgroundImage: `url(${bgg})` }}
+        style={{ backgroundImage: `url(${ne})` }}
       >
         <div className="inset-0 flex justify-center items-center absolute bottom-72 ">
           <Link
@@ -26,7 +26,7 @@ const Home = () => {
           >
             <p className="text-green-500 font-bold">PublicRoom</p>
             <br />
-            <p>this room offert you to chat with a random person </p>
+            <p>this room offert you to chat with all the stuff </p>
             <button className="bg-indigo-600 ml-20 rounded h-8 w-28 mt-12 hover:bg-indigo-400  hover:scale-105 duration-500 shadow-md shadow-violet-400">
               CREATE NOW
             </button>
@@ -50,7 +50,7 @@ const Home = () => {
           >
             <p className="text-green-500 font-bold">StreamRoom</p>
             <br />
-            <p>this room for streamers cooming soon </p>
+            <p>this room for video chat comming soon  </p>
             <button className="bg-indigo-600 ml-20 rounded h-8 w-28 mt-12 hover:bg-indigo-400  hover:scale-105 duration-500 shadow-md shadow-violet-400">
               CREATE NOW
             </button>
