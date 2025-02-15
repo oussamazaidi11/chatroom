@@ -1,14 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { http } from "../api";
 const initialState = {
+  room: {},
   messages: [],
 };
 
+export const createRoom = createAsyncThunk("room/profile", async (data) => {
+  try {
+    const url = "room/profile";
+    const res = await http.post(url, data);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 export const Sendmessage = createAsyncThunk(
   "room/conversation",
   async (data) => {
     try {
-      const response = await http.post("/api/room/conversation", data);
+      const response = await http.post("room/conversation", data);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -25,8 +35,12 @@ export const roomSlice = createSlice({
     deletechat(state, action) {
       state.messages = [];
     },
+    setRoom(state, action) {
+      state.room = action.payload;
+      console.log(state.room);
+    },
   },
 });
-export const { addMessage, deletechat } = roomSlice.actions;
+export const { addMessage, deletechat, setRoom } = roomSlice.actions;
 
 export default roomSlice.reducer;

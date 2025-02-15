@@ -14,6 +14,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "insert password"],
   },
+  role: {
+    type: String,
+    default: "user",
+  },
+  messagesend: {
+    type: Array,
+    default: [],
+  },
 });
 const User = mongoose.model("User", userSchema);
 

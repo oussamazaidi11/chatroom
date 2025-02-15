@@ -7,20 +7,34 @@ import {
   BadgePlus,
 } from "lucide-react";
 import chatbg from "../assets/chatbg.jpg?url";
-
+import { useDispatch } from "react-redux";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
-import { use } from "react";
 
+import { createRoom } from "../features/room/roomSlice";
 const Profile = () => {
-  const [Roomname, setRoomname] = useState("");
-  const [Roompassword, setRoompassword] = useState("");
+  const dispatch = useDispatch();
+
   const [create, setcreate] = useState(false);
   const [visible, setvisible] = useState(false);
+
   const Handlecreateroom = (e) => {
     e.preventDefault();
+    const name = e.target[0].value;
+    const owner = e.target[1].value;
+    const password = e.target[2].value;
+    const limits = e.target[3].value;
+    const data = {
+      name: name,
+      owner: owner,
+      password: password,
+      limits: limits,
+    };
 
-    console.log("function executed ");
+    dispatch(createRoom(data)).then((res) => {
+      console.log(res);
+    });
+    console.log("create with sucess");
   };
   return (
     <div>
@@ -85,7 +99,7 @@ const Profile = () => {
                   className="bg-slate-300 w-full rounded"
                 />
               </div>
-              <div>Crée votre alias👾</div>
+              <div>admin alias👾</div>
               <div>
                 <input
                   type="text"
@@ -96,6 +110,7 @@ const Profile = () => {
               <div>Crée un mot de passe</div>
               <div>
                 <input
+                  placeholder="type a password"
                   type="password"
                   className="bg-slate-300 w-full rounded"
                 />

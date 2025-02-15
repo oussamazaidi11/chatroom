@@ -18,12 +18,14 @@ const roomSchema = new mongoose.Schema({
     required: true,
     default: {},
   },
-  nbperson: {
+  limits: {
     type: Number,
-    default: 1,
+    default: 2,
   },
   conversation: {
     type: Array,
     default: [],
   },
 });
+const Room = mongoose.model("Room", roomSchema);
+module.exports = Room;

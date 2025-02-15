@@ -1,17 +1,17 @@
 const asyncHandler = require("express-async-handler");
 
 const Room = require("../Model/roomSchema");
+const User = require("../Model/userSchema");
 const bcrypt = require("bcryptjs");
 const createRoom = asyncHandler(async (req, res) => {
-  const { name, description, password, owner } = req.body;
+  const { name, owner, password, limits } = req.body;
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   const room = await Room.create({
     name,
     owner,
-
-    description,
     password: hashedPassword,
+    limits,
   });
   if (room) {
     res.status(201).json({ message: "room created with success" });
@@ -34,7 +34,4 @@ const joinRoom = asyncHandler(async (req, re) => {
     }
   }
 });
-
-const Sendmessage = asyncHandler(async (req, res) => {
-  const message = req.body;
-});
+module.exports = createRoom;
