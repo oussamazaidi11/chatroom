@@ -4,7 +4,13 @@ import Footer from "../component/Footer";
 import { LogIn, Eye, EyeClosed } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login, setUser } from "../features/auth/authSlice";
+import {
+  login,
+  setUser,
+  getUser,
+  deleteUser,
+} from "../features/auth/authSlice";
+
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -13,19 +19,27 @@ const Login = () => {
     const email = e.target[0].value;
     const password = e.target[1].value;
     const data = {
-      email: email,
-      password: password,
+      email,
+      password,
     };
 
     console.log(data);
 
-    dispatch(login(data)).then((res) => {
-      console.log(res);
-      dispatch(setUser(res.payload));
-      //hneeeeeeeee aaaaaaa
+    dispatch(login(data))
+      .then((res) => {
+        console.log(res.payload);
+        const H = res.payload.role;
 
-      navigate("/profile");
-    });
+        console.log(H);
+        dispatch(setUser(res.payload));
+        console.log(res.payload);
+        if (H === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/profile");
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (

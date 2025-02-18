@@ -5,6 +5,9 @@ import {
   UserPen,
   CircleHelp,
   BadgePlus,
+  LogOut,
+  ShieldAlert,
+  SmilePlus,
 } from "lucide-react";
 import chatbg from "../assets/chatbg.jpg?url";
 import { useDispatch } from "react-redux";
@@ -17,6 +20,7 @@ const Profile = () => {
 
   const [create, setcreate] = useState(false);
   const [visible, setvisible] = useState(false);
+  const [option, setoption] = useState(false);
 
   const Handlecreateroom = (e) => {
     e.preventDefault();
@@ -58,6 +62,7 @@ const Profile = () => {
                 className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-500 duration-300"
                 onMouseEnter={() => {
                   setcreate(!create);
+                  setoption(false);
                 }}
               >
                 <BadgePlus />
@@ -73,7 +78,13 @@ const Profile = () => {
                 <UserPen />
                 Gestion de profile
               </button>
-              <div className=" flex gap-2 rounded p-2 mt-6 cursor-pointer hover:bg-neutral-500 duration-300">
+              <div
+                className=" flex gap-2 rounded p-2 mt-6 cursor-pointer hover:bg-neutral-500 duration-300"
+                onMouseEnter={() => {
+                  setoption(!option);
+                  setcreate(false);
+                }}
+              >
                 <CircleEllipsis />
                 Options
               </div>
@@ -128,6 +139,33 @@ const Profile = () => {
                 </button>
               </div>
             </form>
+          )}
+          {option && (
+            <div
+              className="w-[20rem] h-[15rem] bg-white/40 mt-[15rem] shadow-lg rounded font-medium   "
+              onMouseLeave={() => {
+                setoption(!option);
+              }}
+            >
+              {" "}
+              <div className="mt-6">
+                <button className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-300 duration-300">
+                  Participer dans une room <SmilePlus className="ml-12" />
+                </button>
+              </div>
+              <div className="mt-6">
+                <button className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-300 duration-300 ">
+                  Signaler un utilisateur{" "}
+                  <ShieldAlert className="ml-[4.4rem]" />
+                </button>
+              </div>
+              <div className="mt-6 ">
+                <button className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-300 duration-300">
+                  logout
+                  <LogOut className="ml-[11.5rem]" />
+                </button>
+              </div>
+            </div>
           )}
           {visible && (
             <div

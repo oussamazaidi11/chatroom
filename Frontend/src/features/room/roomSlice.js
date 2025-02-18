@@ -14,6 +14,15 @@ export const createRoom = createAsyncThunk("room/profile", async (data) => {
     console.log(error);
   }
 });
+export const joinRoom = createAsyncThunk("room/Profile", async (data) => {
+  try {
+    const url = "room/Profile";
+    const res = await http.post(url, data);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 export const Sendmessage = createAsyncThunk(
   "room/conversation",
   async (data) => {
@@ -38,6 +47,11 @@ export const roomSlice = createSlice({
     setRoom(state, action) {
       state.room = action.payload;
       console.log(state.room);
+    },
+    getRoom(state, action) {
+      if ((state.room.name = action.payload)) {
+        console.log("room exist ");
+      }
     },
   },
 });

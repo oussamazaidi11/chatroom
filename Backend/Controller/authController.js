@@ -45,18 +45,29 @@ const register = asyncHandler(async (req, res) => {
 });
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
-  if (!user) {
-    res.status(404).json({ message: "user dosen t exist" });
+
+  if (!email || !password) {
+    return res
+      .status(400)
+      .json({ message: "Please provide both email and password" });
   }
-  const confpass = await bcrypt.compare(password, user.password);
-  if (confpass) {
-    res.status(200).json({
-      message: "connect with success",
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return res.status(404).json({ message: "User doesn't exist" });
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  if (isMatch) {
+    return res.status(200).json({
+      message: "Connected successfully",
       token: Generatetoken(user._id),
+      role: user.role,
     });
   } else {
-    res.status(500).json({ message: "wrong password " });
+    return res.status(401).json({ message: "Incorrect password" });
   }
 });
 
