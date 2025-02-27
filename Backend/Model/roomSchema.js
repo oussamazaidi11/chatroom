@@ -14,9 +14,9 @@ const roomSchema = new mongoose.Schema({
     require: true,
   },
   invited: {
-    type: Object,
+    type: Number,
     required: true,
-    default: {},
+    default:0,
   },
   limits: {
     type: Number,

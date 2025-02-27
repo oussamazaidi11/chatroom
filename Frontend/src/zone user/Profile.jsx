@@ -21,6 +21,7 @@ const Profile = () => {
   const [create, setcreate] = useState(false);
   const [visible, setvisible] = useState(false);
   const [option, setoption] = useState(false);
+  const [join, setjoin] = useState(false);
 
   const Handlecreateroom = (e) => {
     e.preventDefault();
@@ -40,6 +41,16 @@ const Profile = () => {
     });
     console.log("create with sucess");
   };
+  const Handlejoinroom = (e) => {
+    e.preventDefault();
+    const name = e.target[0].value;
+    const password = e.target[1].value;
+    const data = {
+      name: name,
+      password: password,
+    };
+    console.log(data);
+  };
   return (
     <div>
       <div
@@ -50,7 +61,7 @@ const Profile = () => {
         <div name="body section" className="flex gap-6 mt-9">
           <div
             name="container"
-            className="shadow-md  rounded w-[15%] h-[30rem]  bg-purple-300/50 "
+            className="shadow-md  rounded w-[15%] h-[30rem]  bg-amber-800/20 "
           >
             <div className=" mt-4 font-semibold">
               <div className="p-2 mt-6 rounded flex ">
@@ -63,6 +74,7 @@ const Profile = () => {
                 onMouseEnter={() => {
                   setcreate(!create);
                   setoption(false);
+                  setjoin(false);
                 }}
               >
                 <BadgePlus />
@@ -110,14 +122,7 @@ const Profile = () => {
                   className="bg-slate-300 w-full rounded"
                 />
               </div>
-              <div>admin alias👾</div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="entrer un nom"
-                  className="bg-slate-300 w-full rounded"
-                />
-              </div>
+
               <div>Crée un mot de passe</div>
               <div>
                 <input
@@ -149,7 +154,15 @@ const Profile = () => {
             >
               {" "}
               <div className="mt-6">
-                <button className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-300 duration-300">
+                <button
+                  onClick={() => {
+                    setjoin(!join);
+                    setoption(false);
+                    setcreate(false);
+                    setvisible(false);
+                  }}
+                  className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-300 duration-300"
+                >
                   Participer dans une room <SmilePlus className="ml-12" />
                 </button>
               </div>
@@ -170,11 +183,11 @@ const Profile = () => {
           {visible && (
             <div
               name="profile"
-              className="w-[25%] h-[40rem] bg-white/40 rounded shadow ml-[35%]"
+              className="w-[25%] h-[40rem] bg-white/40 rounded shadow ml-[35%] font-semibold"
             >
               <div
                 name="photo"
-                className="rounded-full w-36 h-36  bg-slate-500/50 flex justify-center"
+                className="rounded-full w-36 h-36  bg-white flex justify-center"
               ></div>
               <div>
                 <span className="text-blue-700 font-semibold flex justify-center">
@@ -183,10 +196,64 @@ const Profile = () => {
                 <input type="file" name="" id="" />
               </div>
 
-              <div></div>
-              <div></div>
-              <div></div>
+              <div className="mt-6">
+                <div>
+                  <p>changer le nom</p>
+                  <input
+                    type="text"
+                    className="mt-4 w-[20rem] rounded shadow-md"
+                  />
+                </div>
+
+                <div className="mt-6">
+                  <p>ajouter une adresse</p>
+                  <input
+                    type="email"
+                    className="mt-4 w-[20rem] rounded shadow-md"
+                  />
+                </div>
+
+                <div className="mt-6">
+                  <p>modifier le mot de passe </p>
+                  <input
+                    type="password"
+                    className="mt-4 w-[20rem] rounded shadow-md"
+                  />
+                </div>
+                <div className="mt-16 flex justify-end">
+                  <button
+                    type="submit"
+                    className="bg-blue-500 p-1 rounded shadow-lg hover:bg-blue-400 cursor-pointer"
+                  >
+                    appliquer les modifications
+                  </button>
+                </div>
+              </div>
             </div>
+          )}
+          {join && (
+            <form
+              onSubmit={Handlejoinroom}
+              className="ml-[15rem] mt- bg-slate-200/50 h-[20rem] w-[20rem] rounded font-medium shadow-lg flex justify-center"
+            >
+              <div>
+                <p className="ml-14 text-xl  font-bold"> Quick join</p>
+                <p className="mt-6">insérer le nom du salle :</p>
+                <input type="text" className="mt-6 w-full rounded shadow-lg" />
+                <p className="mt-6"> isérer le mot de passe du salle :</p>
+                <input
+                  type="password"
+                  name=""
+                  id=""
+                  className="mt-6 w-full rounded shadow-lg"
+                />
+                <div className="flex justify-center">
+                  <button className="bg-blue-400 mt-6 p-1 rounded shadow-xl hover:bg-blue-300 duration-500">
+                    Participer
+                  </button>
+                </div>
+              </div>
+            </form>
           )}
         </div>
       </div>

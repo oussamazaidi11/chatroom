@@ -12,7 +12,7 @@ const Roomdisplaymsg = () => {
         <div className="mb-4">
           <div
             name="textarea"
-            className="shadow-md shadow-black h-[50rem] w-[50rem] rounded bg-white/60"
+            className="shadow-md shadow-black h-[50rem] w-[50rem] rounded bg-amber-800/20"
           ></div>
           <form action="" className="flex w-[50rem]  ">
             <input

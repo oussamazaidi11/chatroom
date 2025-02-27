@@ -20,18 +20,19 @@ const createRoom = asyncHandler(async (req, res) => {
   }
 });
 const joinRoom = asyncHandler(async (req, re) => {
-  const { roomName, password } = req.body;
-  const exist = await Room.findOne({ name: roomName });
+  const { name, password } = req.body;
+  const exist = await Room.findOne({ name });
   if (exist) {
-    const isValidPassword = await bcrypt.compare(password, room.password);
+    const isValidPassword = await bcrypt.compare(password, Room.password);
     if (isValidPassword) {
       res.status(200).json({ message: "room joined with success" });
-      const room = await Room.create({
-        invited,
-      });
+      const room = await Room.findOneAndUpdate(
+        { name },
+        { invited: invited++ }
+      );
     } else {
       res.status(400).json({ message: "invalid password , failed join " });
     }
   }
 });
-module.exports = createRoom;
+module.exports = { createRoom, joinRoom };
