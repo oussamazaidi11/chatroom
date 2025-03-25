@@ -24,12 +24,9 @@ const joinRoom = asyncHandler(async (req, re) => {
   const exist = await Room.findOne({ name });
   if (exist) {
     const isValidPassword = await bcrypt.compare(password, Room.password);
-    if (isValidPassword) {
+    if (isValidPassword && Room.limits !== 0) {
       res.status(200).json({ message: "room joined with success" });
-      const room = await Room.findOneAndUpdate(
-        { name },
-        { invited: invited++ }
-      );
+      Room.limits -= 1;
     } else {
       res.status(400).json({ message: "invalid password , failed join " });
     }

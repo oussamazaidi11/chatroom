@@ -6,8 +6,8 @@ import Login from "./zone auth/Login";
 import Register from "./zone auth/Register";
 import Profile from "./zone user/Profile";
 import Roomdisplaymsg from "./zone user/Roomdisplaymsg";
-import adminprofile from "./zone admin/adminprofile";
-import Join from "./zone user/join";
+import Adminprofile from "./zone admin/Adminprofile";
+
 function App() {
   return (
     <div>
@@ -20,8 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/conversation" element={<Roomdisplaymsg />} />
-          <Route path="/admin" element={<adminprofile />} />
-          <Route path="/join" element={<Join />} />
+          <Route path="/admin" element={<Adminprofile />} />
         </Routes>
       </Router>
     </div>

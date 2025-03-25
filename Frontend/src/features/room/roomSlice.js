@@ -14,9 +14,18 @@ export const createRoom = createAsyncThunk("room/profile", async (data) => {
     console.log(error);
   }
 });
-export const joinRoom = createAsyncThunk("room/join", async (data) => {
+export const modifyProfile = createAsyncThunk("room/profile", async (data) => {
   try {
-    const url = "room/join";
+    const url = "room/profile";
+    const res = await http.post(url, data);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+export const joinRoom = createAsyncThunk("room/profile", async (data) => {
+  try {
+    const url = "room/profile";
     const res = await http.post(url, data);
     return res.data;
   } catch (error) {

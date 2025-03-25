@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Opulento } from "uvcanvas";
 import {
   User,
   CircleEllipsis,
@@ -22,6 +23,7 @@ const Profile = () => {
   const [visible, setvisible] = useState(false);
   const [option, setoption] = useState(false);
   const [join, setjoin] = useState(false);
+  const backgroundImage = Opulento();
 
   const Handlecreateroom = (e) => {
     e.preventDefault();
