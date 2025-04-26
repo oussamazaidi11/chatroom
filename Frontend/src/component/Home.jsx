@@ -24,21 +24,29 @@ const Home = () => {
             className="bg-cover bg-center w-52 h-60 rounded shadow-md shadow-black text-white hover:scale-y-110 duration-500 cursor-pointer"
             style={{ backgroundImage: `url(${card})` }}
           >
-            <p className="text-green-500 font-bold">PublicRoom</p>
+            <p className="text-green-500 font-bold">Text Room</p>
             <br />
-            <p>this room offert you to chat with all the stuff </p>
-            <button className="bg-indigo-600 ml-20 rounded h-8 w-28 mt-12 hover:bg-indigo-400  hover:scale-105 duration-500 shadow-md shadow-violet-400">
-              CREATE NOW
-            </button>
+            <p>this room offert you a text chat with your team </p>
+            <div className=" mt-14">
+              <Link
+                to="/login"
+                className="text-sm mt-12 bg-indigo-600 ml-20 rounded  p-2 w-28  hover:bg-indigo-400  hover:scale-105 duration-500 shadow-md shadow-violet-400"
+              >
+                CREATE NOW
+              </Link>
+            </div>
           </div>
           <div
             id="card2"
             className="bg-cover bg-center w-52 h-60 rounded shadow-md shadow-black text-white hover:scale-y-110 duration-500 cursor-pointer"
             style={{ backgroundImage: `url(${card})` }}
           >
-            <p className="text-green-500 font-bold">CustomRoom</p>
+            <p className="text-green-500 font-bold">voice chat Room</p>
             <br />
-            <p>this room offert you a private chat only with invited person </p>
+            <p>
+              this room offert you a voice chat with your invited{" "}
+              <span className="text-violet-400">coming soon</span>{" "}
+            </p>
             <button className="bg-indigo-600 ml-20 rounded h-8 w-28 mt-12 hover:bg-indigo-400  hover:scale-105 duration-500 shadow-md shadow-violet-400">
               CREATE NOW
             </button>
@@ -50,7 +58,10 @@ const Home = () => {
           >
             <p className="text-green-500 font-bold">StreamRoom</p>
             <br />
-            <p>this room for video chat comming soon  </p>
+            <p>
+              this room for video chat{" "}
+              <span className="text-violet-400">coming soon</span>{" "}
+            </p>
             <button className="bg-indigo-600 ml-20 rounded h-8 w-28 mt-12 hover:bg-indigo-400  hover:scale-105 duration-500 shadow-md shadow-violet-400">
               CREATE NOW
             </button>

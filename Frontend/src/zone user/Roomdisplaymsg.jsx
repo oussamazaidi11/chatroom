@@ -2,7 +2,17 @@ import React from "react";
 import { Send } from "lucide-react";
 import Footer from "../component/Footer";
 import chatbg from "../assets/chatbg.jpg?url";
+import { useDispatch } from "react-redux";
+import { addMessage, Sendmessage } from "../features/room/roomSlice";
 const Roomdisplaymsg = () => {
+  const dispatch = useDispatch();
+  const sendMessage = (e) => {
+    const dat = e.target[0];
+    if (length(dat) > 0) {
+      dispatch(Sendmessage(dat));
+      dispatch(addMessage(dat));
+    }
+  };
   return (
     <div>
       <div

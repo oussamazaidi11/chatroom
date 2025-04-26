@@ -14,8 +14,9 @@ import chatbg from "../assets/chatbg.jpg?url";
 import { useDispatch } from "react-redux";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
+import { deleteUser } from "../features/auth/authSlice";
 
-import { createRoom } from "../features/room/roomSlice";
+import { createRoom, joinRoom } from "../features/room/roomSlice";
 const Profile = () => {
   const dispatch = useDispatch();
 
@@ -43,6 +44,9 @@ const Profile = () => {
     });
     console.log("create with sucess");
   };
+  const Logout = () => {
+    dispatch(deleteUser());
+  };
   const Handlejoinroom = (e) => {
     e.preventDefault();
     const name = e.target[0].value;
@@ -52,7 +56,12 @@ const Profile = () => {
       password: password,
     };
     console.log(data);
+    dispatch(joinRoom(data)).then((res) => {
+      console.log(res);
+    });
+    console.log("join with sucess");
   };
+
   return (
     <div>
       <div
@@ -175,7 +184,10 @@ const Profile = () => {
                 </button>
               </div>
               <div className="mt-6 ">
-                <button className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-300 duration-300">
+                <button
+                  onClick={Logout}
+                  className="w-full  flex gap-2 p-2 rounded mt-6 cursor-pointer hover:bg-neutral-300 duration-300"
+                >
                   logout
                   <LogOut className="ml-[11.5rem]" />
                 </button>
@@ -250,7 +262,10 @@ const Profile = () => {
                   className="mt-6 w-full rounded shadow-lg"
                 />
                 <div className="flex justify-center">
-                  <button className="bg-blue-400 mt-6 p-1 rounded shadow-xl hover:bg-blue-300 duration-500">
+                  <button
+                    type="submit"
+                    className="bg-blue-400 mt-6 p-1 rounded shadow-xl hover:bg-blue-300 duration-500"
+                  >
                     Participer
                   </button>
                 </div>

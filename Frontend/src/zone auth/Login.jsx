@@ -39,7 +39,10 @@ const Login = () => {
           navigate("/profile");
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        alert("something went wrong ");
+      });
   };
 
   return (

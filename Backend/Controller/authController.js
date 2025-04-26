@@ -64,6 +64,7 @@ const login = asyncHandler(async (req, res) => {
     return res.status(200).json({
       message: "Connected successfully",
       token: Generatetoken(user._id),
+      id: user._id,
       role: user.role,
     });
   } else {
